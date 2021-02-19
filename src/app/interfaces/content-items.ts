@@ -1,5 +1,4 @@
-  
-export interface ContentItem {
+  export interface ContentItem {
     strDrink: string;
     strDrinkThumb: string;
     idDrink?: number;

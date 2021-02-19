@@ -1,4 +1,4 @@
-<div class="project">
+<div class="page-content">
   <div class="header">
     <div class="header-text">Cocktail DB</div>
     <div class="header-image"><img src="assets/cocktail.png" alt="cocktail"></div>
@@ -7,7 +7,7 @@
     <div class="filter">
       <div class="container">
         <form [formGroup]='filtersForm' (ngSubmit)='submitForm()'>
-          <div class="filter-item" *ngFor="let heading of headings$ | async">
+          <div class="filter-item" *ngFor="let heading of headingData | async">
             <div class="input">
               <label><input type="checkbox" [formControlName]='heading?.strCategory'></label>
             </div>
@@ -20,8 +20,8 @@
       </div>
     </div>
     <div class="content">
-      <div *ngIf='storageService.isShowSpinner === true && cocktails.length ===0; else content'>
-        <mat-spinner color='warn' strokeWidth='75'></mat-spinner>
+      <div *ngIf='storageService.isLoader === true && cocktails.length === 0; else content'>
+        <mat-spinner strokeWidth='100'></mat-spinner>
       </div>
       <ng-template #content>
         <ng-container class="wrapper" *ngFor="let cocktail of cocktails">

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
 import { concatAll, filter, map, mergeMap, takeUntil, tap } from 'rxjs/operators';
@@ -25,12 +25,12 @@ export class CocktailsComponent implements OnInit {
   public paginatorLength: any;
   public paginatorPageIndex: any;
   public filtersForm: FormGroup = this.formBuilder.group({});
-  public headings$!: Observable<Array<any>>;
-  private onDestroy$: Subject<void> = new Subject<void>();
-  constructor(public CocktailService: CocktailService, public storageService: StorageService, private formBuilder: FormBuilder,) { }
+  public headingData!: Observable<Array<any>>;
+  private onDestroyData: Subject<void> = new Subject<void>();
+  constructor(public CocktailService: CocktailService, public storageService: StorageService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.headings$ = this.CocktailService.getFilterItems();
+    this.headingData = this.CocktailService.getFilterItems();
     this.createForm().subscribe();
     console.log(this.cocktails)
   }
@@ -42,8 +42,8 @@ export class CocktailsComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
+    this.onDestroyData.next();
+    this.onDestroyData.complete();
   }
 
   getValues(): Observable<ContentData[]> {
@@ -62,7 +62,7 @@ export class CocktailsComponent implements OnInit {
         )
       )),
       concatAll(),
-      takeUntil(this.onDestroy$),
+      takeUntil(this.onDestroyData),
     );
   }
 
@@ -87,7 +87,7 @@ export class CocktailsComponent implements OnInit {
     .pipe(
       filter(drinks => !!drinks),
       tap(drinks => drinks.map(drink => this.filtersForm.addControl(drink?.strCategory, this.formBuilder.control(true)))),
-      takeUntil(this.onDestroy$),
+      takeUntil(this.onDestroyData),
     );
   }
 

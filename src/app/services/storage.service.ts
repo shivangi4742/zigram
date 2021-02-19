@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class StorageService {
   private formValue = new BehaviorSubject<any>(null);
-  public isShowSpinner = false;
+  public isLoader = false;
 
   constructor() { }
   setValue(data: object): void {
@@ -18,9 +18,9 @@ export class StorageService {
   }
 
   public showSpinner(): void {
-    this.isShowSpinner = true;
+    this.isLoader = true;
     setTimeout(() => {
-      this.isShowSpinner = false;
+      this.isLoader = false;
     }, 2500);
   }
 }

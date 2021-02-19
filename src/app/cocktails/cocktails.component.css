@@ -115,7 +115,7 @@ button {
     cursor: pointer;
 }
 
-.project {
+.page-content {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,0 +1,55 @@
+<div class="project">
+  <div class="header">
+    <div class="header-text">Cocktail DB</div>
+    <div class="header-image"><img src="assets/cocktail.png" alt="cocktail"></div>
+  </div>
+  <div class="main">
+    <div class="filter">
+      <div class="container">
+        <form [formGroup]='filtersForm' (ngSubmit)='submitForm()'>
+          <div class="filter-item" *ngFor="let heading of headings$ | async">
+            <div class="input">
+              <label><input type="checkbox" [formControlName]='heading?.strCategory'></label>
+            </div>
+            <div class="text"> {{heading?.strCategory}} </div>
+          </div>
+          <div class="filter-button">
+            <button class="btn" type='submit'>Apply</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="content">
+      <div *ngIf='storageService.isShowSpinner === true && cocktails.length ===0; else content'>
+        <mat-spinner color='warn' strokeWidth='75'></mat-spinner>
+      </div>
+      <ng-template #content>
+        <ng-container class="wrapper" *ngFor="let cocktail of cocktails">
+          <div *ngIf="cocktail === currentPage[0]">
+            <div class="heading"><strong>{{cocktail[0].title}}</strong></div>
+            <mat-divider></mat-divider>
+
+            <mat-paginator [length]='paginatorLength' [pageIndex]='paginatorPageIndex' pageSize=1
+              (page)='OnPageChange($event)'>
+            </mat-paginator>
+
+            <mat-grid-list cols='5' rowHeight='5:6' gutterSize='2vw' style="width: 70vw">
+              <mat-grid-tile *ngFor="let recipe of cocktail[0].data">
+                <mat-card>
+                  <div class="mat-card-img-container">
+                    <img class="mat-card-img" mat-card-sm-image src="{{recipe.strDrinkThumb}}" alt="">
+                  </div>
+                  <mat-card-content>
+                    <div> {{recipe.strDrink}} </div>
+                  </mat-card-content>
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+          </div>
+        </ng-container>
+      </ng-template>
+    </div>
+  </div>
+
+</div>

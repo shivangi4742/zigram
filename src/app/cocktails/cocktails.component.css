@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap');
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95vw;
+  height: 10vh;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header-text {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2vw;
+    color: #FF8A00;
+}
+
+img {
+    max-width: auto;
+    max-height: 250px;
+}
+.mat-spinner::ng-deep circle {
+    stroke: green;
+  }
+
+:host ::ng-deep mat-spinner {
+    position: fixed;
+    top: 46%;
+    right: 37%;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.heading {
+    width: 100%;
+    padding: 2vh 0;
+    margin-top: 2vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17pt;
+    color: #FF8A00;
+}
+
+mat-paginator {
+    font-size: 1vw;
+}
+
+:host ::ng-deep .mat-paginator-icon {
+    width: 1.75vw;
+}
+
+mat-card {
+    width: 20vw;
+}
+
+.mat-card-img-container {
+    height: 80%;
+    width: 100%;
+    padding-bottom: 1vh;
+}
+
+.mat-card-img {
+    height: 100%;
+    width: 100%;
+}
+
+mat-card-content {
+    height: 20%;
+    width: 100%;
+    font-size: 0.75vw;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    margin-top: 10%;
+}
+
+.filter-item {
+    display: flex;
+    width: 100%;
+    padding-bottom: 2vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12pt;
+    color: #818181;
+}
+
+.input {
+    margin-right: 0.5vw;
+}
+
+.filter-button {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    height: 5vh;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1vw;
+    color: #FFFFFF;
+    background: green;
+    text-transform: uppercase;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+}
+    
+.filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 20vw;
+    border-right: 1px solid #D0D0D0;
+}
+
+.filter-bar {
+    position: fixed;
+    margin-top: 5vh;
+}
+
+.content {
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+.hidden {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.mat-card {
+    background: #f5f1f1;
+    color: rgba(0,0,0,.87)!important;
+}
